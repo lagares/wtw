@@ -319,7 +319,7 @@ PASTEBOARD STYLES
 
 .placeholder {
 	border: 1px solid #fff;
-	border-radius: 0.5em;
+	border-radius: 0.25em;
 	color: #555;
 	margin: 2em 0;
 	padding: 1em;
@@ -328,6 +328,10 @@ PASTEBOARD STYLES
 
 .placeholder:hover {
 	border-color: #8FC7FF;
+}
+
+.placeholder.caution {
+	border-color: #D86A65;
 }
 
 .placeholder .delete-element {
@@ -353,7 +357,6 @@ PASTEBOARD STYLES
 .image-placeholder {
 	background: #eee;
 	border: 2px solid #ccc;
-	border-radius: 3px;
 	min-height: 10em;
 	text-align: center;
 }

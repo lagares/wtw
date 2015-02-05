@@ -125,6 +125,15 @@ $(function utils() {
 			);
 	};
 
+	$('.delete-element').hover(function() {
+		$(this).parent().addClass('caution');
+	});
+
+	$('.delete-element').focusout(function() {
+		console.log('blurred');
+		$(this).parent().removeClass('caution');
+	});
+
 	// remove active content box by clicking the upper right corner x
 	$('.delete-element').on('click', function() {
 		console.log('clicked close');
@@ -138,7 +147,7 @@ $(function utils() {
 	});
 
 	// moving out of the placeholder signifies finished editing, remove the textarea and replace with a <p>
-	$('#textEditor textarea').blur( function() {
+	$('#textEditor textarea').focusout( function() {
 		console.log('left the form');
 		// var editedContent = $(this).text(); // store the newly-edited text
 		// $(this).replaceWith('<span class="delete-element"></span><p>' + editedContent + '</p>');

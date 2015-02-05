@@ -18,9 +18,6 @@ var miniWeebly = angular.module('miniWeebly', []);
 
 		var j; // index of oldName, set on editEnable and used by editPageName
 
-		var parent = $rootScope;
-		var child = parent.$new();
-
 		$scope.pages = ['PAGE']; // this presupposes the existence of at least one page, named PAGE
 		$scope.pageName = 'ADD NEW PAGE';
 
@@ -53,6 +50,7 @@ var miniWeebly = angular.module('miniWeebly', []);
 			// $scope.$apply( $location.path( pageName ) );
 		};
 
+		// to deal with urls and pages
 		miniWeebly.config(function($routeProvider) {
 			$routeProvider.
 				when('/:pageName', {
@@ -176,7 +174,7 @@ $(function utils() {
 
 	// moving out of the placeholder signifies finished editing, remove the textarea and replace with a <p>
 	$('.placeholder').focus( function() {
-		console.log('onfocus');
+		console.log('onfocus');	
 		// var editedContent = $(this).text(); // store the newly-edited text
 		// $(this).replaceWith('<span class="delete-element"></span><p>' + editedContent + '</p>');
 	});

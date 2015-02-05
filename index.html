@@ -18,11 +18,11 @@
 				<h2>templates</h2>
 				<form name="editPageForm">
 					<ul class="tools-pane tools-pages">
-						<li ng-repeat="pageName in pages track by $index" class="page-badge">
-							<input type="text" ng-model="pageName" ng-disabled="!enabled" ng-blur="editPageName(pageName)" />
+						<li ng-repeat="pageName in pages track by $index" class="page-badge" ng-class=" $caution.enabled ? 'caution' : '' ">
+							<input type="text" ng-model="pageName" ng-disabled="!enabled" ng-keypress="($event.which === 13)?editPageName(pageName):0" select-contents />
 							<!-- <input type="submit" class="hide" /> -->
 							<div>
-								<span ng-click="editEnable(pageName)" ng-class="{ active: enabled }" class="button button-edit-pg"></span>
+								<span ng-click="editEnable(pageName)" ng-class="{ active: enabled }" class="button button-edit-pg" ></span>
 								<span class="button button-remove-pg" ng-click="removePage(pageName)"></span>
 							</div>
 						</li>
@@ -32,7 +32,7 @@
 				<form name="addPageForm" ng-submit="addPage()">
 					<ul class="tools-pane tools-pages">
 						<li id="add-new" class="add-new">
-							<input type="text" ng-model="pageName" />
+							<input type="text" ng-model="pageName" select-contents />
 							<input type="submit" class="button button-add-new-pg" ng-disabled="!addPageForm.$dirty" />
 						</li>
 					</ul>
@@ -68,6 +68,7 @@
 			<ul class="pagesNav">
 				<li ng-repeat="pageName in pages track by $index"><a href="#/pages/{{pageName}}" class="button">{{pageName}}</a></li>
 			</ul>
+			<!-- all the cuatom content in a 'page' lives inside this <ul> -->
 			<ul id="content-added-items">
 				<li class="title-placeholder placeholder">
 					<span class="delete-element"></span>
@@ -88,6 +89,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.10/angular-route.min.js"></script>
 
 	<!-- drag-and-drop implementation in angularjs - from https://github.com/angular-ui/ui-sortable -->
 	<script src="js/vendor/sortable.js"></script>

@@ -2,40 +2,72 @@
 // angularjs controller
 var miniWeebly = angular.module('miniWeebly', []);
 
-	var j; // index of oldName, set on editEnable and used by editPageName
+	// allows auto-select text on add/edit page input fields
+	miniWeebly.directive('selectContents', function () {
+		return {
+			restrict: 'A',
+			link: function (scope, element, attrs) {
+				element.on('click', function () {
+					this.select();
+				});
+			}
+		};
+	});
 
 	miniWeebly.controller('pgCtrl', function ($scope){
-	
-	$scope.pages = ['PAGE']; // this presupposes the existence of at least one page, named PAGE
-	$scope.pageName = 'ADD NEW PAGE';
 
-	$scope.addPage = function() {
-		$scope.pages.push($scope.pageName);
+		var j; // index of oldName, set on editEnable and used by editPageName
+
+		var parent = $rootScope;
+		var child = parent.$new();
+
+		$scope.pages = ['PAGE']; // this presupposes the existence of at least one page, named PAGE
 		$scope.pageName = 'ADD NEW PAGE';
-		$scope.addPageForm.$setPristine();
-	};
 
-	$scope.removePage = function(pageName) {
-		var i = $scope.pages.indexOf(pageName);
-		$scope.pages.splice(i, 1);
-	};
+		$scope.addPage = function() {
+			// create a new page object w corresponding child scope here
+			// ...
 
-	$scope.editEnable = function(pageName) {
-		$scope.enabled = !$scope.enabled;
-		var oldName = pageName;
-		j = $scope.pages.indexOf(oldName);
-	};
+			// add the pageName here for demo purposes
+			$scope.pages.push($scope.pageName);
+			$scope.pageName = 'ADD NEW PAGE';
+			$scope.addPageForm.$setPristine();
+		};
 
-	$scope.editPageName = function(pageName) {
-		$scope.enabled = !$scope.enabled;	
-		$scope.pages.splice(j, 1, pageName);
-		// console.log($routeProvider);
-		// $scope.$apply( $location.path( pageName ) );
-	};
+		$scope.removePage = function(pageName) {
+			var i = $scope.pages.indexOf(pageName);
+			$scope.pages.splice(i, 1);
+		};
 
-	function update() {
-		$scope.$apply();
-	};
+		$scope.editEnable = function(pageName) {
+			$scope.enabled = !$scope.enabled;
+			var oldName = pageName;
+			j = $scope.pages.indexOf(oldName);
+		};
+
+		$scope.editPageName = function(pageName) {
+			$scope.enabled = !$scope.enabled;
+			$scope.pages.splice(j, 1, pageName);
+
+			// console.log($routeProvider);
+			// $scope.$apply( $location.path( pageName ) );
+		};
+
+		miniWeebly.config(function($routeProvider) {
+			$routeProvider.
+				when('/:pageName', {
+					templateUrl: 'index.html',
+					controller: 'miniWeebly'
+				}).
+				otherwise({
+				redirectTo: '/'
+			});
+		});
+
+
+		function update() {
+			$scope.$apply();
+		};
 
 	/* TODO:
 
@@ -44,18 +76,21 @@ var miniWeebly = angular.module('miniWeebly', []);
 	*- enable auto-fill screen-width
 	*- on click added-content-item, make editable
 
-	1- add submit button to editable content in order to submit it? NO - submit onBlur
+	1- submit editable content onBlur 
 	2- enable half-size when drag on-top of another - "columns"
 	3- implement 'pages' - objects made up of name, an array of content frames' names?, the type of each content frame, the content of each content frame - Wahid says use individual Angular $scopes for each 'page', to keep their contents apart
 	3- BUG - on tool drag stop content is added to the pasteboard even if dropped on sidebar, why?
-	4- BUG - only content frames already on screen are deletable. New ones do not delete, why?
+	4- BUG - only content frames already on screen are deletable/editable. New ones do not delete, why?
 	5- BUG - only first page-badge accepts :hover delete color, why?
 	6- How to update the URL fragment when the page name is edited?
+	7- enable resize + handles
+	8- enable 'selected' state on page-badge and pasteboard button nav
 
 	*/
-});
+	});
 
 // Pasteboard utils
+
 $(function utils() {
 
 	var contentType; // set by the draggable.stop, used by addContent
@@ -76,12 +111,11 @@ $(function utils() {
 		helper: 'clone',
 		stop: function() {
 			contentType = $(this).data('contenttype');
-			addContent(contentType);
+			// limit adding content types to in-scope
+			if (contentType === 'text' || contentType === 'image') {
+				addContent(contentType);
+			}
 		}
-	});
-
-	$( '#sidebar').droppable({
-		disabled: true
 	});
 
 	$( '#content-added-items').droppable();
@@ -93,9 +127,9 @@ $(function utils() {
 	});
 
 	$('.placeholder').resizable({
-		autoHide: true,
+		// autoHide: true,
 		containment: 'parent',
-		ghost: true,
+		// ghost: true,
 		handles: 'e, s, w'
 	});
 
@@ -121,17 +155,11 @@ $(function utils() {
 			.append('<span class="delete-element"></span>')
 			.append( dummyContent )
 			.addClass('placeholder ' + contentType + '-placeholder')
-			.appendTo($('#content-added-items')
-			);
+			.appendTo($('#content-added-items'));
 	};
 
 	$('.delete-element').hover(function() {
-		$(this).parent().addClass('caution');
-	});
-
-	$('.delete-element').focusout(function() {
-		console.log('blurred');
-		$(this).parent().removeClass('caution');
+		$(this).parent().toggleClass('caution');
 	});
 
 	// remove active content box by clicking the upper right corner x
@@ -147,13 +175,12 @@ $(function utils() {
 	});
 
 	// moving out of the placeholder signifies finished editing, remove the textarea and replace with a <p>
-	$('#textEditor textarea').focusout( function() {
-		console.log('left the form');
+	$('.placeholder').focus( function() {
+		console.log('onfocus');
 		// var editedContent = $(this).text(); // store the newly-edited text
 		// $(this).replaceWith('<span class="delete-element"></span><p>' + editedContent + '</p>');
 	});
 
-});
-	
+});	
 
 

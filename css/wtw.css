@@ -202,6 +202,7 @@ SIDEBAR STYLES
 	font-size: 80%;
 	margin: 0.5em 1.5em 1.5em 1.5em;
 	padding: 0.5em 1.25em;
+	position: relative;
 	text-align: left;
 	text-transform: none;
 }
@@ -218,12 +219,13 @@ SIDEBAR STYLES
 }
 
 .add-new .button-add-new-pg {
-	background: transparent url(../images/sprites/Add-Delete-Edit-Icons.png) -14px -13px no-repeat;
+	background: #2C3E50 url(../images/sprites/Add-Delete-Edit-Icons.png) -14px -13px no-repeat;
 	border: none;
-	float: right;
+	position: absolute;
 	font-size: 0;
 	height: 14px;
 	width: 14px;
+	right: 4%;
 }
 
 .add-new .button-add-new-pg:hover {
@@ -277,6 +279,7 @@ SIDEBAR STYLES
 	display: inline-block;
 	height: 22px;
 	margin-left: 30%;
+	vertical-align: middle;
 	width: 50px;
 }
 
@@ -373,6 +376,10 @@ PASTEBOARD STYLES
 	text-transform: uppercase;
 }
 
+.text-placeholder {
+	background-color: #fff;
+}
+
 .text-placeholder p {
 	font-size: 80%;
 	line-height: 1.5;
@@ -385,12 +392,42 @@ PASTEBOARD STYLES
 	width: 100%;
 }
 
+.ui-resize-s {
+	background: transparent url(../images/Resize-Bar.png) no-repeat; 
+}
+
 
 //* -----------------------------------------------------------------------------------------
 
-TODO: 
-
-1- breakpoint(s)?
-
+TIDYING UP THINGS A BIT FOR NARROWER VIEWPORTS
 
 ------------------------------------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+	.tools-other .toggle + label span {
+		margin-left: 10%;
+	}
+}
+
+@media (max-width: 800px) {
+	.tools-elements {
+		width: 100%;
+	}
+}
+
+@media (max-width: 700px) {
+	.add-new .button-add-new-pg {
+		right: 20%;
+	}
+
+	.add-new > label, .add-new input {
+		color: #485C70;
+	}
+}
+
+@media (max-width: 528px) {
+	.add-new .button-add-new-pg {
+		right: 25%;
+		top: 25%;
+	}
+}

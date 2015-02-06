@@ -14,6 +14,27 @@ var miniWeebly = angular.module('miniWeebly', ['ngSanitize']);
 		};
 	});
 
+	miniWeebly.directive("contenteditable", function() {
+		return {
+			restrict: "A",
+			require: "ngModel",
+			link: function(scope, element, attrs, ngModel) {
+
+				function read() {
+					ngModel.$setViewValue(element.html());
+				}
+
+				ngModel.$render = function() {
+					element.html(ngModel.$viewValue || "");
+				};
+
+				element.bind("blur keyup change", function() {
+					scope.$apply(read);
+				});
+			}
+		};
+	});	
+
 	miniWeebly.controller('pgCtrl', function ($scope){
 
 		var j; // index of oldName, set on editEnable and used by editPageName
@@ -98,7 +119,6 @@ var miniWeebly = angular.module('miniWeebly', ['ngSanitize']);
 	1- submit editable content onBlur 
 	2- enable half-size when drag on-top of another - "columns"
 	3- BUG - on tool drag stop content is added to the pasteboard even if dropped on sidebar, why?
-	4- BUG - only content frames already on screen are deletable/editable. New ones do not delete, why?
 	7- enable resize + handles
 	*- enable 'selected' state on page-badge and pasteboard button nav
 	*- BUG - only first page-badge accepts :hover delete color, why?

@@ -407,7 +407,12 @@ PASTEBOARD STYLES
     transform: rotateZ(90deg);
 }
 
-
+/*[contenteditable] {
+	border: 2px dotted #ccc;
+	background-color: #eee;
+	padding: 2px;
+}
+*/
 /* -----------------------------------------------------------------------------------------
 
 TIDYING UP THINGS A BIT FOR NARROWER VIEWPORTS

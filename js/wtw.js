@@ -25,7 +25,11 @@ var miniWeebly = angular.module('miniWeebly', []);
 			// create a new page object w corresponding child scope here
 			// ...
 
+<<<<<<< HEAD
 			/* something like
+=======
+			/*
+>>>>>>> e58a4e2e6600abc1f79bbaa3263a78054fb6b837
 			{
 				pageName : 'PAGE',
 				placeholder1 : 'placeholder1content',
@@ -37,7 +41,11 @@ var miniWeebly = angular.module('miniWeebly', []);
 
 			{
 				pageName : 'PAGE',
+<<<<<<< HEAD
 				placholders : [ 'placeholder1', 'placeholder1content' ], [ 'placeholder2', 'placeholder2content', ... ]
+=======
+				placholders : [ 'placeholder1', 'placeholder1content'], [ 'placeholder2', 'placeholder2content', ...]
+>>>>>>> e58a4e2e6600abc1f79bbaa3263a78054fb6b837
  				...
 			}
 
@@ -104,7 +112,11 @@ var miniWeebly = angular.module('miniWeebly', []);
 
 // Pasteboard utils
 
+<<<<<<< HEAD
 $(function() {
+=======
+$(function utils() {
+>>>>>>> e58a4e2e6600abc1f79bbaa3263a78054fb6b837
 
 	var contentType; // set by the draggable.stop, used by addContent
 
@@ -151,7 +163,11 @@ $(function() {
 				dummyContent = '<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>';
 				break;
 			case 'image':
+<<<<<<< HEAD
 				dummyContent = '<small>ADD IMAGE +</small>';
+=======
+				dummyContent = '<img src="images/Image-Placeholder.png" alt="placeholder image" />';
+>>>>>>> e58a4e2e6600abc1f79bbaa3263a78054fb6b837
 				break;
 			case 'nav':
 				dummyContent = ''; // out of scope
@@ -189,11 +205,15 @@ $(function() {
 		// $(this).replaceWith('<span class="delete-element"></span><p>' + editedContent + '</p>');
 	});
 
+<<<<<<< HEAD
 	$('.pagesNav .button').click( function() {
 		$('.pagesNav .button').removeClass('selected');
 		$(this).addClass('selected');
 	})
 
 });
+=======
+});	
+>>>>>>> e58a4e2e6600abc1f79bbaa3263a78054fb6b837
 
 

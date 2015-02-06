@@ -25,6 +25,24 @@ var miniWeebly = angular.module('miniWeebly', []);
 			// create a new page object w corresponding child scope here
 			// ...
 
+			/*
+			{
+				pageName : 'PAGE',
+				placeholder1 : 'placeholder1content',
+				placeholder2 : 'placeholder2content'
+				...
+			}
+
+			or 
+
+			{
+				pageName : 'PAGE',
+				placholders : [ 'placeholder1', 'placeholder1content'], [ 'placeholder2', 'placeholder2content', ...]
+ 				...
+			}
+
+			*/
+
 			// add the pageName here for demo purposes
 			$scope.pages.push($scope.pageName);
 			$scope.pageName = 'ADD NEW PAGE';
@@ -45,9 +63,6 @@ var miniWeebly = angular.module('miniWeebly', []);
 		$scope.editPageName = function(pageName) {
 			$scope.enabled = !$scope.enabled;
 			$scope.pages.splice(j, 1, pageName);
-
-			// console.log($routeProvider);
-			// $scope.$apply( $location.path( pageName ) );
 		};
 
 		// to deal with urls and pages
@@ -62,7 +77,7 @@ var miniWeebly = angular.module('miniWeebly', []);
 			});
 		});
 
-
+		// on change of .tools-pages, #content-added-items, let Angular know so that newly-created items become available for changes such as edits, etc.
 		function update() {
 			$scope.$apply();
 		};
@@ -96,10 +111,7 @@ $(function utils() {
 	// page delete warning highlight
 	$('.page-badge .button-remove-pg').hover(
 		function() {
-			$(this).parent().parent().addClass('caution')
-		},
-		function() {
-			$(this).parent().parent().removeClass('caution')
+			$(this).parent().parent().toggleClass('caution')
 		}
 	);
 
@@ -162,7 +174,6 @@ $(function utils() {
 
 	// remove active content box by clicking the upper right corner x
 	$('.delete-element').on('click', function() {
-		console.log('clicked close');
 		$(this).parent().remove();
 	});
 
@@ -174,7 +185,6 @@ $(function utils() {
 
 	// moving out of the placeholder signifies finished editing, remove the textarea and replace with a <p>
 	$('.placeholder').focus( function() {
-		console.log('onfocus');	
 		// var editedContent = $(this).text(); // store the newly-edited text
 		// $(this).replaceWith('<span class="delete-element"></span><p>' + editedContent + '</p>');
 	});

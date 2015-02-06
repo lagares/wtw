@@ -2,7 +2,7 @@
 // angularjs controller
 var miniWeebly = angular.module('miniWeebly', ['ngSanitize']);
 
-	// allows auto-select text on add/edit page input fields
+	// auto-select text on add/edit page input fields
 	miniWeebly.directive('selectContents', function () {
 		return {
 			restrict: 'A',
@@ -48,9 +48,6 @@ var miniWeebly = angular.module('miniWeebly', ['ngSanitize']);
 		// 	{ 'title'	: '<h1>Add Title Here</h1>'}
 		// ];
 
-		$scope.pages.page = 'ADD NEW PAGE'; 
-
-
 		$scope.currentPage = null;
 
 		$scope.setCurrentPage = function(page) {
@@ -63,7 +60,7 @@ var miniWeebly = angular.module('miniWeebly', ['ngSanitize']);
 
 		$scope.addPage = function(page) {
 			$scope.pages.push(page);
-			$scope.pages.page = 'ADD NEW PAGE';
+			$scope.page = '';
 			$scope.addPageForm.$setPristine();
 		};
 
@@ -111,7 +108,7 @@ var miniWeebly = angular.module('miniWeebly', ['ngSanitize']);
 	*/
 	});
 
-// Pasteboard utils
+// #pasteboard utils- 'outside Angular'
 
 $(function() {
 	var contentType; // set by the draggable.stop, used by addContent
@@ -177,15 +174,6 @@ $(function() {
 			.appendTo($('#content-added-items'));
 	};
 
-	// $('.delete-element').hover(function() {
-	// 	$(this).parent().toggleClass('caution');
-	// });
-
-	// // remove active content box by clicking the upper right corner x
-	// $('.delete-element').on('click', function() {
-	// 	$(this).parent().remove();
-	// });
-
 	// make content editable - text content type only for now
 	$('.text-placeholder p').click( function() {
 		var content = $(this).text();
@@ -198,5 +186,15 @@ $(function() {
 		$(this).empty()
 		.append('<span class="delete-element"></span><p>' + editedContent + '</p>');
 	});
+
+	function resetAddForm() {
+		$('#addPageForm input[type="text"]').val('ADD NEW PAGE');
+	};	
+
+	$('#addPageForm').on('submit', function() {
+		resetAddForm();
+	});
+
+	resetAddForm();
 
 });

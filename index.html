@@ -28,7 +28,7 @@
 					</ul>
 				</form>
 
-				<form name="addPageForm" ng-submit="addPage(page)">
+				<form id="addPageForm" name="addPageForm" ng-submit="addPage(page)">
 					<ul class="tools-pane tools-pages">
 						<li id="add-new" class="add-new">
 							<input type="text" ng-model="page.name" select-contents />
@@ -40,6 +40,7 @@
 			</div>
 			<div id="content-tools" class="tools-block">
 				<h2>elements</h2>
+				<!-- no space between </li><li> to allow inline-blocks to abut neatly -->
 				<ul>
 					<li class="tools-pane tools-elements">
 						<div data-contenttype="title" class="tool-icon title"></div>
@@ -57,6 +58,7 @@
 				</ul>
 			</div>
 
+			<!-- no space between </div><div> to allow inline-blocks to abut neatly -->
 			<div class="tools-block">
 				<h2>settings</h2>
 				<div class="tools-pane tools-other">
@@ -68,7 +70,6 @@
 				<li ng-repeat="page in pages track by $index"><a href="#/pages/{{page.name}}" class="button" ng-click="setCurrentPage(page)" ng-class="{ 'selected' : isCurrentPage(page) }">{{page.name}}</a></li>
 			</ul>
 
-
 			<!-- all the custom content in a 'page' lives inside this <ul> -->
 			<ul id="content-added-items">
 				<li ng-repeat="block in blocks | filter: {page:currentPage.name}" class="placeholder {{block.type}}" ng-class=" caution ? 'caution' : '' ">
@@ -79,16 +80,13 @@
  		</div>
 	</main>
 
+	<!-- dependencies -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular-sanitize.js"></script>
 
-
-	<!-- drag-and-drop implementation in angularjs - from https://github.com/angular-ui/ui-sortable -->
-	<script src="js/vendor/sortable.js"></script>
-	
-	<!-- controllers and other custom scripts -->
+	<!-- controllers and custom scripts -->
 	<script src="js/wtw.js"></script>
 
 </body>

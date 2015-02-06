@@ -105,7 +105,6 @@ var miniWeebly = angular.module('miniWeebly', []);
 // Pasteboard utils
 
 $(function() {
-
 	var contentType; // set by the draggable.stop, used by addContent
 
 	// page delete warning highlight
@@ -195,5 +194,3 @@ $(function() {
 	})
 
 });
-
-

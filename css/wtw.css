@@ -136,6 +136,7 @@ SIDEBAR STYLES
 	font-size: 80%;
 	margin: 0.5em 1.5em;
 	padding: 0.75em 1.5em;
+	position: relative;
 	text-align: left;
 	text-decoration: none;
 }
@@ -172,15 +173,17 @@ SIDEBAR STYLES
 }
 
 .page-badge div {
-	float: right;
-	position: relative;
+	display: inline-block;
+	position: absolute;
+	right: 1.2em;
+	top: 30%;
 	visibility: hidden;
 	z-index: 0;
 }
 
 .page-badge div .button {
 	float: left;
-	width: 16px; /* to add a little breathing room between the icons */
+	margin-left: 4px;
 }
 
 .page-badge:hover div {
@@ -358,22 +361,20 @@ PASTEBOARD STYLES
 }
 
 .image-placeholder {
-	background: #eee;
+	background: #eee url(../images/Image-Placeholder.png) center no-repeat;
 	border: 2px solid #ccc;
+	cursor: pointer;
 	min-height: 10em;
+	position: relative;
 	text-align: center;
 }
 
-.image-placeholder .placeholder-image {
+.image-placeholder small {
+	bottom: 8%;
 	color: #ccc;
-	cursor: pointer;
-	padding: 2em;
-}
-
-.placeholder-image img, .placeholder-image small {
-	display: block;
-	margin: 0 auto;
-	text-transform: uppercase;
+	left: 0;
+	position: absolute;
+	width: 100%;
 }
 
 .text-placeholder {
@@ -429,5 +430,30 @@ TIDYING UP THINGS A BIT FOR NARROWER VIEWPORTS
 	.add-new .button-add-new-pg {
 		right: 25%;
 		top: 25%;
+	}
+}
+
+
+//* -----------------------------------------------------------------------------------------
+
+FOR RETINA SCREENS
+
+------------------------------------------------------------------------------------------- */
+
+@media only screen and (-webkit-device-pixel-ratio: 2){
+	.page-badge .button {
+		background-image: url(../images/sprites/Add-Delete-Edit-Icons@2x.png);
+	}
+
+	.tools-elements .tool-icon {
+		background-image: url(../images/sprites/Element-icons@2x.png);
+	}
+
+	.tools-other .toggle + label span {
+		background-image: url(../images/sprites/Toggle-Switch@2x.png);
+	}	
+
+	.image-placeholder {
+		background-image: url(../images/Image-Placeholder@2x.png);
 	}
 }

@@ -136,10 +136,7 @@ SIDEBAR STYLES
 	font-size: 80%;
 	margin: 0.5em 1.5em;
 	padding: 0.75em 1.5em;
-<<<<<<< HEAD
 	position: relative;
-=======
->>>>>>> e58a4e2e6600abc1f79bbaa3263a78054fb6b837
 	text-align: left;
 	text-decoration: none;
 }
@@ -176,26 +173,17 @@ SIDEBAR STYLES
 }
 
 .page-badge div {
-<<<<<<< HEAD
 	display: inline-block;
 	position: absolute;
 	right: 1.2em;
 	top: 30%;
-=======
-	float: right;
-	position: relative;
->>>>>>> e58a4e2e6600abc1f79bbaa3263a78054fb6b837
 	visibility: hidden;
 	z-index: 0;
 }
 
 .page-badge div .button {
 	float: left;
-<<<<<<< HEAD
 	margin-left: 4px;
-=======
-	width: 16px; /* to add a little breathing room between the icons */
->>>>>>> e58a4e2e6600abc1f79bbaa3263a78054fb6b837
 }
 
 .page-badge:hover div {
@@ -373,7 +361,6 @@ PASTEBOARD STYLES
 }
 
 .image-placeholder {
-<<<<<<< HEAD
 	background: #eee url(../images/Image-Placeholder.png) center no-repeat;
 	border: 2px solid #ccc;
 	cursor: pointer;
@@ -388,24 +375,6 @@ PASTEBOARD STYLES
 	left: 0;
 	position: absolute;
 	width: 100%;
-=======
-	background: #eee;
-	border: 2px solid #ccc;
-	min-height: 10em;
-	text-align: center;
-}
-
-.image-placeholder .placeholder-image {
-	color: #ccc;
-	cursor: pointer;
-	padding: 2em;
-}
-
-.placeholder-image img, .placeholder-image small {
-	display: block;
-	margin: 0 auto;
-	text-transform: uppercase;
->>>>>>> e58a4e2e6600abc1f79bbaa3263a78054fb6b837
 }
 
 .text-placeholder {
@@ -429,7 +398,7 @@ PASTEBOARD STYLES
 }
 
 
-//* -----------------------------------------------------------------------------------------
+/* -----------------------------------------------------------------------------------------
 
 TIDYING UP THINGS A BIT FOR NARROWER VIEWPORTS
 
@@ -462,11 +431,10 @@ TIDYING UP THINGS A BIT FOR NARROWER VIEWPORTS
 		right: 25%;
 		top: 25%;
 	}
-<<<<<<< HEAD
 }
 
 
-//* -----------------------------------------------------------------------------------------
+/* -----------------------------------------------------------------------------------------
 
 FOR RETINA SCREENS
 
@@ -489,6 +457,3 @@ FOR RETINA SCREENS
 		background-image: url(../images/Image-Placeholder@2x.png);
 	}
 }
-=======
-}
->>>>>>> e58a4e2e6600abc1f79bbaa3263a78054fb6b837

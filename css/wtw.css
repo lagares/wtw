@@ -337,7 +337,7 @@ PASTEBOARD STYLES
 }
 
 .placeholder.caution {
-	border-color: #D86A65;
+	border-color: #D86A65 !important;
 }
 
 .placeholder .delete-element {
@@ -360,7 +360,7 @@ PASTEBOARD STYLES
 	right: -12px;
 }
 
-.image-placeholder {
+#pasteboard .image, .image-placeholder {
 	background: #eee url(../images/Image-Placeholder.png) center no-repeat;
 	border: 2px solid #ccc;
 	cursor: pointer;
@@ -369,7 +369,7 @@ PASTEBOARD STYLES
 	text-align: center;
 }
 
-.image-placeholder small {
+.image small, .image-placeholder small {
 	bottom: 8%;
 	color: #ccc;
 	left: 0;
@@ -377,24 +377,32 @@ PASTEBOARD STYLES
 	width: 100%;
 }
 
-.text-placeholder {
+.text, .text-placeholder {
 	background-color: #fff;
 }
 
-.text-placeholder p {
+.text p, .text-placeholder p {
 	font-size: 80%;
 	line-height: 1.5;
 }
 
-.text-placeholder textarea {
+.text textarea, .text-placeholder textarea {
 	border: none;
 	font-size: 80%;
 	line-height: 1.5;
 	width: 100%;
 }
 
+.title h1 {
+	text-transform: capitalize;
+}
+
 .ui-resize-s {
-	background: transparent url(../images/Resize-Bar.png) no-repeat; 
+	background: transparent url(../images/Resize-Bar.png) no-repeat;
+	height: 50px;
+	width: 15px;
+	-webkit-transform: rotateZ(90deg);
+    transform: rotateZ(90deg);
 }
 
 

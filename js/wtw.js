@@ -17,8 +17,6 @@ var miniWeebly = angular.module('miniWeebly', ['ngSanitize']);
 	miniWeebly.controller('pgCtrl', function ($scope){
 
 		var j; // index of oldName, set on editEnable and used by editPageName
-		// var enabled = false;
-		// var caution = false;
 
 		// page names and pages as objects
 		$scope.pages = [ 
@@ -27,15 +25,10 @@ var miniWeebly = angular.module('miniWeebly', ['ngSanitize']);
 			{ 'name': 'PAGE TWO' }
 		];
 
-		// page names and pages as array
-		// $scope.pages = [ 'PAGE ZERO', 'PAGE ONE', 'PAGE TWO' ];	
-
-		// $scope.page = 'ADD NEW PAGE'; 
-
 		// this simulates pre-existing/edited content
 		$scope.blocks = [
 			{ 'page': 'PAGE ZERO', 'type': 'title', 'contents': '<h1>ipsa quae ab illo</h1>' },
-			{ 'page': 'PAGE ZERO', 'type': 'image', 'contents': '<img src="http://lagares.github.io/wtw/images/Image-Placeholder.png" alt="image" />' },
+			{ 'page': 'PAGE ZERO', 'type': 'image', 'contents': '<img src="http://lagares.github.io/wtw/images/userimg.jpg" alt="image" />' },
 			{ 'page': 'PAGE ZERO', 'type': 'text', 'contents': '<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, </p>' },
 			{ 'page': 'PAGE ZERO', 'type': 'text', 'contents': '<p>Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>' },
 			{ 'page': 'PAGE ONE', 'type': 'title', 'contents': '<h1>Totam rem aperiam</h1>' },
@@ -43,17 +36,20 @@ var miniWeebly = angular.module('miniWeebly', ['ngSanitize']);
 			{ 'page': 'PAGE ONE', 'type': 'text', 'contents': '<p>Fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.</p>' },
 			{ 'page': 'PAGE ONE', 'type': 'text', 'contents': '<p>Consectetur, adipisci velit, sed consequuntur magni dolores eos qui ratione et dolore magnam aliquam quaerat voluptatem eos qui ratione voluptatem sequi.</p>' },
 			{ 'page': 'PAGE TWO', 'type': 'title', 'contents': '<h1>sed quia consequuntur</h1>' },
-			{ 'page': 'PAGE TWO', 'type': 'image', 'contents': '<img src="http://lagares.github.io/wtw/images/Image-Placeholder.png" alt="image" />' },
-			{ 'page': 'PAGE TWO', 'type': 'image', 'contents': '<img src="http://lagares.github.io/wtw/images/Image-Placeholder.png" alt="image" />' },
-			{ 'page': 'PAGE TWO', 'type': 'image', 'contents': '<img src="http://lagares.github.io/wtw/images/Image-Placeholder.png" alt="image" />' } 
+			{ 'page': 'PAGE TWO', 'type': 'image', 'contents': '<img src="http://lagares.github.io/wtw/images/userimg.jpg" alt="image" />' },
+			{ 'page': 'PAGE TWO', 'type': 'image', 'contents': '<img src="http://lagares.github.io/wtw/images/userimg.jpg" alt="image" />' },
+			{ 'page': 'PAGE TWO', 'type': 'image', 'contents': '<img src="http://lagares.github.io/wtw/images/userimg.jpg" alt="image" />' } 
 		];
 
-		$scope.placeholderContent = [
-			{ 'text'	: '<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>'},
-			{ 'image'	: '' },
-			{ 'nav'		: '' },
-			{ 'title'	: '<h1>Add Title Here</h1>'}
-		];
+		// $scope.placeholderContent = [
+		// 	{ 'text'	: '<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>'},
+		// 	{ 'image'	: '' },
+		// 	{ 'nav'		: '' },
+		// 	{ 'title'	: '<h1>Add Title Here</h1>'}
+		// ];
+
+		$scope.pages.page = 'ADD NEW PAGE'; 
+
 
 		$scope.currentPage = null;
 
@@ -66,11 +62,8 @@ var miniWeebly = angular.module('miniWeebly', ['ngSanitize']);
 		};
 
 		$scope.addPage = function(page) {
-			// create a new page object w corresponding child scope here
-			// ...
-
-			$scope.pages.push($scope.name);
-			$scope.page = 'ADD NEW PAGE';
+			$scope.pages.push(page);
+			$scope.pages.page = 'ADD NEW PAGE';
 			$scope.addPageForm.$setPristine();
 		};
 
@@ -151,6 +144,7 @@ $(function() {
 		revert: true
 	});
 
+	// creates resize handles
 	$('.placeholder').resizable({
 		// autoHide: true,
 		// ghost: true,
@@ -179,19 +173,18 @@ $(function() {
 		$('<li/>')
 			.append('<span class="delete-element"></span>')
 			.append( dummyContent )
-			.addClass('placeholder ' + contentType + '-placeholder')
-			// .addClass('placeholder ' + {{block.type}}) no longer depends on passing contentType via JS outside NG
+			.addClass('placeholder ' + contentType)
 			.appendTo($('#content-added-items'));
 	};
 
-	$('.delete-element').hover(function() {
-		$(this).parent().toggleClass('caution');
-	});
+	// $('.delete-element').hover(function() {
+	// 	$(this).parent().toggleClass('caution');
+	// });
 
-	// remove active content box by clicking the upper right corner x
-	$('.delete-element').on('click', function() {
-		$(this).parent().remove();
-	});
+	// // remove active content box by clicking the upper right corner x
+	// $('.delete-element').on('click', function() {
+	// 	$(this).parent().remove();
+	// });
 
 	// make content editable - text content type only for now
 	$('.text-placeholder p').click( function() {

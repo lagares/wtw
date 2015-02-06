@@ -360,8 +360,11 @@ PASTEBOARD STYLES
 	right: -12px;
 }
 
-#pasteboard .image, .image-placeholder {
-	background: #eee url(../images/Image-Placeholder.png) center no-repeat;
+#pasteboard .placeholder.image {
+	background: #eee;
+	background-image: url(../images/Image-Placeholder.png);
+	background-position: center 25%;
+	background-repeat: no-repeat;	
 	border: 2px solid #ccc;
 	cursor: pointer;
 	min-height: 10em;
@@ -369,7 +372,7 @@ PASTEBOARD STYLES
 	text-align: center;
 }
 
-.image small, .image-placeholder small {
+.placeholder.image small {
 	bottom: 8%;
 	color: #ccc;
 	left: 0;
@@ -377,23 +380,22 @@ PASTEBOARD STYLES
 	width: 100%;
 }
 
-.text, .text-placeholder {
+.placeholder.text {
 	background-color: #fff;
 }
 
-.text p, .text-placeholder p {
-	font-size: 80%;
+.placeholder.text p {
 	line-height: 1.5;
 }
 
-.text textarea, .text-placeholder textarea {
+.placeholder.text textarea {
 	border: none;
 	font-size: 80%;
 	line-height: 1.5;
 	width: 100%;
 }
 
-.title h1 {
+.placeholder.title h1 {
 	text-transform: capitalize;
 }
 

@@ -50,12 +50,12 @@ var miniWeebly = angular.module('miniWeebly', ['ngSanitize']);
 		$scope.blocks = [
 			{ 'page': 'PAGE ZERO', 'type': 'title', 'contents': '<h1>ipsa quae ab illo</h1>' },
 			{ 'page': 'PAGE ZERO', 'type': 'image', 'contents': '<img src="http://lagares.github.io/wtw/images/userimg.jpg" alt="image" />' },
-			{ 'page': 'PAGE ZERO', 'type': 'text', 'contents': '<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, </p>' },
-			{ 'page': 'PAGE ZERO', 'type': 'text', 'contents': '<p>Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>' },
+			{ 'page': 'PAGE ZERO', 'type': 'text', 'contents': '<p>Veritatis et quasi architecto veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, </p>' },
+			{ 'page': 'PAGE ZERO', 'type': 'text', 'contents': '<p>Totam rem aperiam, veritatis et quasi veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>' },
 			{ 'page': 'PAGE ONE', 'type': 'title', 'contents': '<h1>Totam rem aperiam</h1>' },
-			{ 'page': 'PAGE ONE', 'type': 'text', 'contents': '<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. </p>' },
-			{ 'page': 'PAGE ONE', 'type': 'text', 'contents': '<p>Fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.</p>' },
-			{ 'page': 'PAGE ONE', 'type': 'text', 'contents': '<p>Consectetur, adipisci velit, sed consequuntur magni dolores eos qui ratione et dolore magnam aliquam quaerat voluptatem eos qui ratione voluptatem sequi.</p>' },
+			{ 'page': 'PAGE ONE', 'type': 'text', 'contents': '<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt veritatis et quasi architecto beatae vitae dicta sunt explicabo veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit. Nemo enim ipsam voluptatem quia voluptas sit. </p>' },
+			{ 'page': 'PAGE ONE', 'type': 'text', 'contents': '<p>Fugit, sed quia consequuntur magni dolores eos veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit dolorem ipsum quia dolor sit amet.</p>' },
+			{ 'page': 'PAGE ONE', 'type': 'text', 'contents': '<p>Consectetur, adipisci velit, sed consequuntur magni dolores eos qui veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit voluptas sit ratione et dolore magnam aliquam quaerat voluptatem eos qui ratione voluptatem sequi.</p>' },
 			{ 'page': 'PAGE TWO', 'type': 'title', 'contents': '<h1>sed quia consequuntur</h1>' },
 			{ 'page': 'PAGE TWO', 'type': 'image', 'contents': '<img src="http://lagares.github.io/wtw/images/userimg.jpg" alt="image" />' },
 			{ 'page': 'PAGE TWO', 'type': 'image', 'contents': '<img src="http://lagares.github.io/wtw/images/userimg.jpg" alt="image" />' },
@@ -117,9 +117,13 @@ var miniWeebly = angular.module('miniWeebly', ['ngSanitize']);
 	});
 
 
-// #pasteboard utils- 'outside Angular'
+//  'outside Angular'
+
 
 $(function() {
+
+// #pasteboard utils-
+	
 	var contentType; // set by the draggable.stop, used by addContent
 
 	// page delete warning highlight
@@ -158,7 +162,7 @@ $(function() {
 		handles: 'e, s, w'
 	});
 
-	// when the .tool-icon stops over the #pasteboard, create an <li> of the appropriate type, text or image for now
+	// when the .tool-icon stops over the #pasteboard, create an <li> of the appropriate type 
 	function addContent(contentType) {
 		var dummyContent = '';
 		switch(contentType) {
@@ -183,7 +187,11 @@ $(function() {
 			.appendTo($('#content-added-items'));
 	};
 
-	// restore 'add a new page' on reload and after every submit
+
+// #sidebar utils-
+
+// restore 'add a new page' on reload and after every submit
+
 	function resetAddForm() {
 		$('#addPageForm input[type="text"]').val('ADD NEW PAGE');
 	};	

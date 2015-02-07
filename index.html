@@ -74,6 +74,7 @@
 			<ul id="content-added-items">
 				<li ng-repeat="block in blocks | filter: {page:currentPage.name}" class="placeholder {{block.type}}" ng-class=" caution ? 'caution' : '' ">
 					<span ng-model="block" ng-mouseover="cautionOn(block)" ng-mouseleave="cautionOff(block)" ng-click="removeBlock(block)" class="delete-element"></span>
+					<span class="handle-e"></span><span class="handle-s"></span><span class="handle-w"></span>
 					<div contenteditable ng-model="block.contents" ng-bind-html="block.contents">{{block.contents}}</div>
 				</li>
 			</ul>

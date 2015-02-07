@@ -332,6 +332,39 @@ PASTEBOARD STYLES
 	position: relative;
 }
 
+.placeholder:hover .handle-e {
+	background: transparent url(../images/Resize-Bar.png) no-repeat;
+	right: -0.5em;
+	height: 50px;
+	top: 45%;
+	position: absolute;
+	width: 15px;
+}
+
+.placeholder:hover .handle-w {
+	background: transparent url(../images/Resize-Bar.png) no-repeat;
+	left: -0.5em;
+	height: 50px;
+	top: 45%;
+	position: absolute;
+	width: 15px;
+}
+
+.placeholder:hover .handle-s {
+	background: transparent url(../images/Resize-Bar.png) no-repeat;
+	bottom: -1.5em;
+	height: 50px;
+	left: 45%;
+	position: absolute;
+	width: 15px;
+	-webkit-transform: rotateZ(90deg);
+    transform: rotateZ(90deg);
+}
+
+.placeholder.title:hover .handle-e, .placeholder.title:hover .handle-w {
+	top: 15px !important;
+}
+
 .placeholder:hover {
 	border-color: #8FC7FF !important;
 }
@@ -399,13 +432,7 @@ PASTEBOARD STYLES
 	text-transform: capitalize;
 }
 
-.ui-resize-s {
-	background: transparent url(../images/Resize-Bar.png) no-repeat;
-	height: 50px;
-	width: 15px;
-	-webkit-transform: rotateZ(90deg);
-    transform: rotateZ(90deg);
-}
+
 
 /*[contenteditable] {
 	border: 2px dotted #ccc;

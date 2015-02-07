@@ -114,19 +114,8 @@ var miniWeebly = angular.module('miniWeebly', ['ngSanitize']);
 			$scope.blocks.splice(i, 1);			
 		}
 
-	/* TODO:
-
-	1- submit editable content onBlur 
-	2- enable half-size when drag on-top of another - "columns"
-	3- BUG - on tool drag stop content is added to the pasteboard even if dropped on sidebar, why?
-	7- enable resize + handles
-	*- enable 'selected' state on page-badge and pasteboard button nav
-	*- BUG - only first page-badge accepts :hover delete color, why?
-	*- How to update the URL fragment when the page name is edited?
-	*- implement 'pages' - objects made up of name, an array of content frames' names?, the type of each content frame, the content of each content frame - Wahid says use individual Angular $scopes for each 'page', to keep their contents apart
-
-	*/
 	});
+
 
 // #pasteboard utils- 'outside Angular'
 
@@ -163,8 +152,8 @@ $(function() {
 
 	// creates resize handles
 	$('.placeholder').resizable({
-		// autoHide: true,
-		// ghost: true,
+		autoHide: true,
+		ghost: true,
 		containment: 'parent',
 		handles: 'e, s, w'
 	});
@@ -194,19 +183,7 @@ $(function() {
 			.appendTo($('#content-added-items'));
 	};
 
-	// make content editable - text content type only for now
-	$('.text-placeholder p').click( function() {
-		var content = $(this).text();
-		$(this).replaceWith('<form id="textEditor"><textarea tabindex="-1">' + content + '</textarea></form>');
-	});
-
-	// moving out of the placeholder signifies finished editing, remove the textarea and replace with a <p>
-	$('.placeholder').on('focusout', function() {
-		var editedContent = $(this).text(); // store the newly-edited text
-		$(this).empty()
-		.append('<span class="delete-element"></span><p>' + editedContent + '</p>');
-	});
-
+	// restore 'add a new page' on reload and after every submit
 	function resetAddForm() {
 		$('#addPageForm input[type="text"]').val('ADD NEW PAGE');
 	};	

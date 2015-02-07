@@ -333,10 +333,10 @@ PASTEBOARD STYLES
 }
 
 .placeholder:hover {
-	border-color: #8FC7FF;
+	border-color: #8FC7FF !important;
 }
 
-.placeholder.caution {
+.placeholder.caution:hover {
 	border-color: #D86A65 !important;
 }
 

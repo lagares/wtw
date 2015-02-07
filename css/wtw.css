@@ -305,7 +305,7 @@ PASTEBOARD STYLES
 
 #pasteboard .pagesNav li {
 	display: inline-block;
-	margin: 0 0.5em;
+	margin: 0.5em;
 }
 
 #pasteboard .pagesNav .button {
